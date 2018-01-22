@@ -1,0 +1,37 @@
+﻿@model WebUI.Models.PhotoModelView
+
+@{
+
+    ViewBag.Title = "Albums";
+    Layout = "~/Views/Shared/_LayoutForPhoto.cshtml";
+    
+}
+
+
+
+
+<div class="container">
+   
+    @{Html.RenderAction("Menu", "Nav", new { userId=ViewBag.UserId });}
+    <div class="clearfix mosaicflow">
+        @foreach (var ph in Model.Photos)
+        {
+            @*<div class="mosaicflow__item">
+                <a class="fancyimage" rel="group" href="@Url.Action("GetPhoto", "Photo", new { ph.PhotoID})">
+                    <img src="@Url.Action("GetPhoto", "Photo", new { ph.PhotoID})" />
+                </a>
+            </div>*@
+            @*<div class="mosaicflow__item">
+                    <a class="fancyimage" rel="group" href="~/Img/sampleuser@gmail.com.png">
+                        <img src="~/Img/sampleuser@gmail.com.png" />
+                    </a>
+                </div>*@
+            Html.RenderPartial("Shared/PhotoSummary", ph);
+
+        }
+        </div>
+    </div>
+
+
+
+
